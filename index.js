@@ -2,15 +2,16 @@
 var express = require("express"),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    cookieParser = require('cookie-parser'),
+    // cookieParser = require('cookie-parser'),
     app = express(),
     db = require("./models");
-var path = require("path"),
-    views_path = path.join(process.cwd(), "views");
+// var path = require("path"),
+//     views_path = path.join(process.cwd(), "views");
 
 app.use(express.static(__dirname + "/public"));
 app.use("/vendor", express.static(__dirname+"/vendor"));
 app.use(bodyParser.urlencoded({extended: true}));
+app.set('view engine', 'ejs');
 
 
 db.User.find({}, function(err, foundUsers){
@@ -63,25 +64,25 @@ app.post(["/login", "/"], function login(req, res){
 });
 
 app.get("/", function(req, res){
-  var index = path.join(views_path, "index.html");
-  res.sendFile(index);
+  // var index = path.join(views_path, "index.html");
+  // res.sendFile(index);
+  res.render('index', {user: req.user});
 });
 
 app.get("/login", function(req, res){
-  var login_form = path.join(views_path, "login.html");
-  res.sendFile(login_form);
+  // var login_form = path.join(views_path, "login.html");
+  res.render('login');
 });
 
 app.get("/signup", function(req, res){
-  var signup_form = path.join(views_path, "signup.html");
-  res.sendFile(signup_form);
+  // var signup_form = path.join(views_path, "signup.html");
+  res.render('signup');
 });
 
 app.get("/leaderboard", function(req, res){
-  var leaderboard = path.join(views_path, "leaderboard.html");
-  res.sendFile(leaderboard);
+  // var leaderboard = path.join(views_path, "leaderboard.html");
+  res.render('leaderboard');
 });
-
 
 
  /*
