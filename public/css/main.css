@@ -1,0 +1,17 @@
+.gameboard {
+  display:  table;
+  width: 750px;
+  margin: 10%;
+  border:1px solid  #666666;
+}
+
+.piece {
+  height: 100px;
+  width: 100px;
+  border: 2px solid blue;
+  display: inline-block;
+  margin: 10px;
+ 
+ 
+}
+

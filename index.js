@@ -47,13 +47,15 @@ app.post(["/signup"], function signup(req, res) {
   });
 });
 
-app.post(["/login"], function login(req, res){
+// app.post("/", function )
+
+app.post(["/login", "/"], function login(req, res){
   var user = req.body.user;
   var email = user.email;
   var password = user.password;
   db.User.authenticate(email, password, function(err, user){
     if (err === null) {
-      res.send(email + " is logged in\n");
+      res.redirect("/");
     } else {
       res.send(err)
     }
