@@ -23,20 +23,43 @@ db.User.find({}, function(err, foundUsers){
 /*
  * create our session
  */
- app.use(
+app.use(
   session({
     secret: 'secret-private-key',
     resave: false,
     saveUninitialized: true
   })
-  );
+);
+
+app.use(function (req, res, next) {
+  // login a user
+  req.login = function (user) {
+    req.session.userId = user._id;
+  };
+  // find the current user
+  req.currentUser = function (cb) {
+    db.User.
+      findOne({ _id: req.session.userId },
+      function (err, user) {
+        req.user = user;
+        cb(null, user);
+      })
+  };
+  // logout the current user
+  req.logout = function () {
+    req.session.userId = null;
+    req.user = null;
+  }
+  // call the next middleware in the stack
+  next(); 
+});
 
 /*
  * Routes
  */
 
 // where the user submits the sign-up form
-app.post(["/signup"], function signup(req, res) {
+app.post(["/signup", "/users"], function signup(req, res) {
   // grab the user from the params
   var user = req.body.user;
   // pull out their email & password
@@ -50,15 +73,16 @@ app.post(["/signup"], function signup(req, res) {
 
 // app.post("/", function )
 
-app.post(["/login", "/"], function login(req, res){
+app.post(["/login", "/sessions"], function login(req, res){
   var user = req.body.user;
   var email = user.email;
   var password = user.password;
   db.User.authenticate(email, password, function(err, user){
     if (err === null) {
+      req.login(user);
       res.redirect("/");
     } else {
-      res.send(err)
+      res.send(err);
     }
   });
 });
