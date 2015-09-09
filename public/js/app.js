@@ -6,8 +6,6 @@ function Game(){
 }
 
 Game.prototype.init=function(numRow, numCol){
-
-  // return "<a id='tile" + i +"' href='" + links[i] + "' </a>";
   // when a piece is clicked, toggle it's class between show and hidden.. flip the piece over
   var game = this;
   $(".piece").on("click", function(event){
@@ -43,10 +41,13 @@ function Player(name){
 Player.prototype.move = function(){
   this.clicked++; //increments counter of tiles clicked
   return this.clicked; //returns the tile clicked
-  // this.clickCount = 0;
-  // this.firstClick = 0
-  // this.secondClick = 0;
-  // this.matched = [];
+
+    // this.clickCount = 0;
+    // this.firstClick = 0
+    // this.secondClick = 0;
+    // this.matched = [];
+  // $(".piece").toggle(clicked++ % 2 === 0);
+
 };
 
 
@@ -54,7 +55,18 @@ Player.prototype.move = function(){
 function Gameboard(){
   //track the tiles clicked
   // this.$pieces = $(".gameboard .piece");
-  this.tiles = [];
+  // this.tiles = [];
+ 
+/// Shuffles the board when reset button is clicked!
+ $("#reset").on("click", function(event){
+  $(function shuffle() {
+    var parent = $("#shuffle");
+    var divs = parent.children();
+    while (divs.length) {
+        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+    }
+    })
+});
 };
 
 function Tile(x, y) {
@@ -67,22 +79,14 @@ Gameboard.prototype.flipTile = function(){
   
 }
 
-
-//OOP GAME MODELS 
+// wait for the document to be ready
 $(document).ready(function() {
-
   console.log("app.js is now running");
-  // wait for the document to be ready
-
-
+  
   //Start the game! 
-
   var game = new Game(); //follows function Game()
   game.init();
   console.log(game.player.name);
 
-  //########################################################################
-  // ################################################################### 
 
 });
-// $(".piece").toggle(clicked++ % 2 === 0);
