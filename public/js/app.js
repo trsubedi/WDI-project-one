@@ -7,8 +7,9 @@ $(document).ready(function(){
 
   //     var clicked = 0;
   //     var matched = [];
-  $(".piece-image").on("click", function(){
-    $(this).hide();
+  $(".piece").on("click", function(){
+    $(this).children().toggleClass("show hidden");
+    
     
   });
 
