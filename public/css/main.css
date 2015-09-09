@@ -1,7 +1,23 @@
+body {
+  font-family: 'Oswald', sans-serif;
+  background-image: url("http://pixelgirlpresents.com/images/desktops/j3_concepts/area04layedoutblue.png");
+}
+
+.navbar {
+  background-color: #99FF99;
+}
+
+.btn {
+  margin: 2%;
+  color: #33CCCC;
+}
+
+
 .gameboard {
   display:  table;
   width: 750px;
   margin: 10%;
+  box-shadow: 10px 10px 5px #888888;
   border:1px solid  #666666;
 }
 
@@ -11,7 +27,15 @@
   border: 2px solid blue;
   display: inline-block;
   margin: 10px; 
+  box-shadow: 10px 10px 5px #888888;
+  overflow: hidden;
+
 }
+
+.hideImg{
+  display: none;
+}
+
 
 .piece-image {
   height: 100px;
@@ -24,19 +48,17 @@
   z-index: 0;
 }
 
-.piece-image-red {
-  background-color: red;
+.piece-image-octo {
+  /*background-image: url();*/
   height: 100px;
   width: 100px;
-  /*background-image: url("https://octodex.github.com/images/homercat.png");*/
   background-size: 100px;
 }
 
 .piece-image-blue{
-  background-color: blue;
+  /*background-color: #D5FDD5;*/
   height: 100px;
   width: 100px;
-  /*background-image: url("https://octodex.github.com/images/homercat.png");*/
   background-size: 100px;
 }
 
