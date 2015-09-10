@@ -40,7 +40,6 @@ body {
 .piece-image {
   height: 100px;
   width: 100px;
-  background-image: url("https://octodex.github.com/images/homercat.png");
   background-size: 100px;
 }
 
@@ -49,14 +48,12 @@ body {
 }
 
 .piece-image-octo {
-  /*background-image: url();*/
   height: 100px;
   width: 100px;
   background-size: 100px;
 }
 
 .piece-image-blue{
-  /*background-color: #D5FDD5;*/
   height: 100px;
   width: 100px;
   background-size: 100px;
