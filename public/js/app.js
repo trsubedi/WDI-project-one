@@ -1,26 +1,30 @@
-function isMatch($lastClicked, $justClicked) {
+function isMatch($lastClicked, $justClicked, $id, $prevId) {
   // TODO: ignore self matches
   var prevVal;
   var currentVal;
+  var sameCardClicked = false;
   if ($lastClicked === undefined) {
     prevVal = undefined;
   } else {
     prevVal = $lastClicked;
   }
   currentVal = $justClicked;
+  if ($prevId !== undefined){
+    if($prevId === $id){
+      sameCardClicked = true;
+    }
+  }
 
-  var match = prevVal === currentVal;
+  var match = ((!sameCardClicked) && (prevVal === currentVal));
 
   //console.log(prevVal , "=" , currentVal);
   //console.log("Is this a match? " + match);
-  //console.log(isSame);
-
   if (match) {
     // stay flipped
-    console.log("match!")
+    alert("match!");
   } else {
     // flip back
-    console.log("no match!")
+    console.log("no match!");
   }
 
 }
@@ -28,6 +32,7 @@ function isMatch($lastClicked, $justClicked) {
 $(document).ready(function(){
   var turnCount = 0;
   var $lastClicked;
+  var $lastClickedId;
   // shuffle function
   $("#reset").on("click", function shuffle(event){
       var parent = $("#shuffle");
@@ -38,19 +43,21 @@ $(document).ready(function(){
   });
   //toggles between hide and show image
   $(".piece").on("click", function(){
-
-    //console.log();
     // increment turn count
     turnCount++;
     var $justClicked = $(this).find("img")[0].src;
+    var $justClickedId = $(this).find("img")[0].id;
     $(this).find(".githubImg").toggleClass("hideImg");
     // compare previous and current click items
     // only call isMatch on even turns
-    isMatch($lastClicked, $justClicked);
+    isMatch($lastClicked, $justClicked, $justClickedId, $lastClickedId);
     $lastClicked = $justClicked;
+    //TODO: change isMatch so it returns a Boolean (the match value)
+      //if (isMatch(...)) {
+      // alert("it's a match bitch!")
+    $lastClickedId = $justClickedId;
+    console.log("clicked id is: " + $justClickedId);
+    console.log("last clicked is: " + $lastClickedId)
   });
 
 })
-
-
-// 
