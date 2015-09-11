@@ -16,20 +16,29 @@ body {
 .gameboard {
   display:  table;
   width: 750px;
-  margin: 10%;
+  margin: 9%;
+  margin-bottom: 5%;
   box-shadow: 10px 10px 5px #888888;
-  border:1px solid  #666666;
+  border:2px solid  #666666;
+  border-radius: 20px;
 }
+
 
 .piece {
   height: 100px;
   width: 100px;
-  border: 2px solid blue;
+  border: 3px solid #FFFF7F;
   display: inline-block;
   margin: 10px; 
   box-shadow: 10px 10px 5px #888888;
   overflow: hidden;
+  border-radius: 20px;
+}
 
+#reset {
+  position: relative;
+  bottom: 70px;
+  right: 40px;
 }
 
 .hideImg{
@@ -111,10 +120,9 @@ body {
 }
 
 
-
-
 .top{
   height: 100px;
   width: 100px;
-  background-size: 100px;
+  background-size: 150px;
+  background-image: url("http://pixelgirlpresents.com/images/desktops/railhead/PixelsII_tmb.jpg");
 }

@@ -15,3 +15,4 @@
     "postinstall": "bower install"   // <---- only need this line if you're using Bower
    }
 }
+  
