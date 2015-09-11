@@ -65,7 +65,7 @@ $(document).ready(function(){
       else {
         console.log('no match!')
         $(this).find('div').toggleClass('show hidden');
-        $($lastClicked).find('div').toggleClass('show hidden')
+        $($lastClicked).find('div').toggleClass('show hidden');
       }
       $lastClicked = null;
     }
