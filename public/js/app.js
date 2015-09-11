@@ -1,5 +1,5 @@
 function isMatch($lastClicked, $justClicked, $id, $prevId) {
-  // TODO: ignore self matches
+ 
   var prevVal;
   var currentVal;
   var sameCardClicked = false;
@@ -17,22 +17,21 @@ function isMatch($lastClicked, $justClicked, $id, $prevId) {
 
   var match = ((!sameCardClicked) && (prevVal === currentVal));
 
-  //console.log(prevVal , "=" , currentVal);
-  //console.log("Is this a match? " + match);
+
   if (match) {
     // stay flipped
     alert("match!");
   } else {
-    // flip back
-    console.log("no match!");
+    // hide clicked elements 
+    $(this).f.toggleClass("hideImg");    
   }
 
 }
 
 $(document).ready(function(){
-  var turnCount = 0;
-  var $lastClicked;
-  var $lastClickedId;
+
+  var $lastClicked = null;
+  // var $lastClickedId;
   // shuffle function
   $("#reset").on("click", function shuffle(event){
       var parent = $("#shuffle");
@@ -43,21 +42,34 @@ $(document).ready(function(){
   });
   //toggles between hide and show image
   $(".piece").on("click", function(){
-    // increment turn count
-    turnCount++;
-    var $justClicked = $(this).find("img")[0].src;
-    var $justClickedId = $(this).find("img")[0].id;
-    $(this).find(".githubImg").toggleClass("hideImg");
-    // compare previous and current click items
-    // only call isMatch on even turns
-    isMatch($lastClicked, $justClicked, $justClickedId, $lastClickedId);
-    $lastClicked = $justClicked;
-    //TODO: change isMatch so it returns a Boolean (the match value)
-      //if (isMatch(...)) {
-      // alert("it's a match bitch!")
-    $lastClickedId = $justClickedId;
-    console.log("clicked id is: " + $justClickedId);
-    console.log("last clicked is: " + $lastClickedId)
+
+    // flip the piece
+    $(this).find('div').toggleClass('show hidden')
+   
+    // if $lastClicked is null, that means this was the first turn
+    // so assign $lastClicked to $(this)
+    if ($lastClicked == null) {
+      $lastClicked = $(this);
+    }
+    // if this is the second turn, we'll go into this code block...
+    else {
+      // grab the class that represents the piece's image 
+      // (first class in the list of classes)
+      var _this = $(this).find('div').first().attr('class').split(' ')[0]
+      var last = $lastClicked.find('div').first().attr('class').split(' ')[0];
+      var samePiece = ($(this).attr('id') === $lastClicked.attr('id'))
+
+      if (_this === last && !samePiece) {
+        console.log('match!');
+      }
+      else {
+        console.log('no match!')
+        $(this).find('div').toggleClass('show hidden');
+        $($lastClicked).find('div').toggleClass('show hidden')
+      }
+      $lastClicked = null;
+    }
+
   });
 
 })

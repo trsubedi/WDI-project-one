@@ -47,13 +47,73 @@ body {
   z-index: 0;
 }
 
-.piece-image-octo {
+.adv-cat {
   height: 100px;
   width: 100px;
   background-size: 100px;
+  background-image: url('https://octodex.github.com/images/adventure-cat.png');
 }
 
-.piece-image-blue{
+.link-cat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url('https://octodex.github.com/images/linktocat.jpg');
+}
+
+.megacat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url('https://octodex.github.com/images/megacat.jpg');
+}
+
+.plumbercat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/plumber.jpg");
+}
+
+.riddlecat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/riddlocat.png");
+}
+
+.scarletteocat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/scarletteocat.jpg");
+}
+
+.poptocat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/poptocat.png");
+}
+
+.xtocat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/xtocat.jpg");
+}
+
+.cherryontop-o-cat {
+  height: 100px;
+  width: 100px;
+  background-size: 100px;
+  background-image: url("https://octodex.github.com/images/cherryontop-o-cat.png");
+}
+
+
+
+
+.top{
   height: 100px;
   width: 100px;
   background-size: 100px;
