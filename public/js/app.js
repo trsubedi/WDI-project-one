@@ -1,3 +1,4 @@
+
 function isMatch($lastClicked, $justClicked, $id, $prevId) {
  
   var prevVal;
@@ -29,6 +30,10 @@ function isMatch($lastClicked, $justClicked, $id, $prevId) {
 }
 
 $(document).ready(function(){
+  alert('login to play');
+  // $('.adv-cat hidden').on('click',function({
+  //   alert('login to play game');
+  // }));
 
   var $lastClicked = null;
   // var $lastClickedId;
@@ -42,6 +47,7 @@ $(document).ready(function(){
   });
   //toggles between hide and show image
   $(".piece").on("click", function(){
+    alert('login to play game')
 
     // flip the piece
     $(this).find('div').toggleClass('show hidden')
@@ -72,4 +78,8 @@ $(document).ready(function(){
 
   });
 
-})
+});
+
+// $.get("/", function(res){
+//   alert('res');
+// });

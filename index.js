@@ -87,6 +87,7 @@ app.post(["/login", "/sessions"], function login(req, res){
 });
 
 app.get("/", function(req, res){
+  // res.send("login to play")
   // find current user
   req.currentUser(function(err, user) {
     // render page with found user (but one may not be found...)
